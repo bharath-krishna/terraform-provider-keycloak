@@ -41,8 +41,6 @@ func dataSourceKeycloakGroupsRead(ctx context.Context, data *schema.ResourceData
 	}
 
 	data.SetId(realmId)
-	fmt.Printf("this is for debug plus: %+v", group_list)
-	fmt.Printf("this is for debug hash: %#v", group_list)
 
 	mapFromGroupsToData(data, group_list)
 
