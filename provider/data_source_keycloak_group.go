@@ -2,6 +2,7 @@ package provider
 
 import (
 	"context"
+
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/mrparkers/terraform-provider-keycloak/keycloak"
@@ -45,6 +46,12 @@ func dataSourceKeycloakGroupRead(ctx context.Context, data *schema.ResourceData,
 	if err != nil {
 		return diag.FromErr(err)
 	}
+	// group_list, err := keycloakClient.GetGroups(ctx, realmId)
+	// if err != nil {
+	// 	return diag.FromErr(err)
+	// }
+
+	// fmt.Printf("group details are inside method: %#v ", group_list)
 
 	mapFromGroupToData(data, group)
 

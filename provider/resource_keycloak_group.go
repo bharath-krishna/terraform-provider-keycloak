@@ -4,8 +4,9 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"strings"
+
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/mrparkers/terraform-provider-keycloak/keycloak"
@@ -80,6 +81,14 @@ func mapFromGroupToData(data *schema.ResourceData, group *keycloak.Group) {
 	if group.ParentId != "" {
 		data.Set("parent_id", group.ParentId)
 	}
+}
+
+func mapFromGroupsToData(data *schema.ResourceData, groups []*keycloak.Group) {
+	group_list := []string{}
+	for _, group := range groups {
+		group_list = append(group_list, group.Name)
+	}
+	data.Set("groups", group_list)
 }
 
 func resourceKeycloakGroupCreate(ctx context.Context, data *schema.ResourceData, meta interface{}) diag.Diagnostics {

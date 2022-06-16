@@ -14,6 +14,7 @@ func KeycloakProvider(client *keycloak.KeycloakClient) *schema.Provider {
 	provider := &schema.Provider{
 		DataSourcesMap: map[string]*schema.Resource{
 			"keycloak_group":                              dataSourceKeycloakGroup(),
+			"keycloak_groups":                             dataSourceKeycloakGroups(),
 			"keycloak_openid_client":                      dataSourceKeycloakOpenidClient(),
 			"keycloak_openid_client_authorization_policy": dataSourceKeycloakOpenidClientAuthorizationPolicy(),
 			"keycloak_openid_client_service_account_user": dataSourceKeycloakOpenidClientServiceAccountUser(),
