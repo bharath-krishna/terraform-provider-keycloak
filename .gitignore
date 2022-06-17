@@ -29,3 +29,7 @@ site/
 *.zip
 
 .DS_Store
+
+
+.vscode
+dist
